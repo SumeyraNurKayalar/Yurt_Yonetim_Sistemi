@@ -1,7 +1,7 @@
-#Yurt Yönetim Sistemi Projesi
+# Yurt Yönetim Sistemi Projesi
 Bu proje, bir öğrenci yurdu ortamındaki öğrenci kaydı, personel yönetimi, oda atamaları ve izin talebi süreçlerini yönetmek için tasarlanmış bir masaüstü uygulamasıdır. Uygulama, Java ve JavaFX kullanılarak Model-View-Controller prensipleri etrafında geliştirilmiş olup, temiz kod ve sürdürülebilirlik sağlamak için tasarım desenleri uygulamaktadır.
 
-Temel Özellikler
+## Temel Özellikler
 • Güvenli Kimlik Doğrulama: Şifre hashleme ile güvenli giriş ve kayıt.
 
 • Rol Bazlı Erişim: Öğrenci ve Personel rolleri ile farklı arayüz ve yetkilendirme.
