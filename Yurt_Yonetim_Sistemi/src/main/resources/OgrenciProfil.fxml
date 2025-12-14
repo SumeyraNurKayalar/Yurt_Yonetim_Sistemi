@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Separator?>
+
+<VBox alignment="TOP_CENTER" spacing="10.0" prefHeight="650.0" prefWidth="450.0"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.OgrenciProfilController">
+
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+
+    <Label text="Profil Bilgileri Yönetimi" textFill="#00796b">
+        <font>
+            <Font name="System Bold" size="22.0" />
+        </font>
+    </Label>
+    <Label text="Zorunlu alanları güncelleyebilir, isterseniz şifrenizi değiştirebilirsiniz." />
+
+    <TextField fx:id="adField" promptText="Ad" />
+    <TextField fx:id="soyadField" promptText="Soyad" />
+
+    <TextField fx:id="tcField" promptText="T.C. Kimlik No (Düzenlenemez)" style="-fx-background-color: #e0e0e0; -fx-opacity: 1;" />
+
+    <Separator VBox.margin="$null" />
+
+    <TextField fx:id="emailField" promptText="E-posta" />
+    <TextField fx:id="telefonField" promptText="Telefon Numarası" />
+
+    <TextArea fx:id="adresArea" prefHeight="70.0" promptText="Adres Bilgisi" />
+
+    <Label text="Şifre Değişikliği (Opsiyonel)" style="-fx-font-weight: bold;">
+        <VBox.margin>
+            <Insets top="10.0" />
+        </VBox.margin>
+    </Label>
+
+    <PasswordField fx:id="sifreField" promptText="Yeni Şifre (Min. 8 karakter)" />
+    <PasswordField fx:id="sifreTekrarField" promptText="Yeni Şifre Tekrarı" />
+
+    <Button onAction="#profiliGuncelle" prefWidth="200.0" text="Profili Güncelle" style="-fx-background-color: #00796b; -fx-text-fill: white;">
+        <VBox.margin>
+            <Insets top="15.0" />
+        </VBox.margin>
+    </Button>
+
+</VBox>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" spacing="20.0" prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.PersonelAnaController">
+
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+
+    <Label text="Personel Yönetim Paneli" textFill="#004d40">
+        <font>
+            <Font name="System Bold" size="24.0" />
+        </font>
+    </Label>
+    <Label text="Lütfen yapmak istediğiniz işlemi seçin:" />
+
+    <HBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
+
+        <Button onAction="#kullaniciYonetimiAc" text="👤 Kullanıcı Yönetimi" prefWidth="200.0" prefHeight="60.0"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;"/>
+
+        <Button onAction="#odaYonetimiAc" text="🛌 Oda Yönetimi" prefWidth="200.0" prefHeight="60.0"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;"/>
+
+        <Button onAction="#izinYonetimiAc" text="🚪 İzin Yönetimi" prefWidth="200.0" prefHeight="60.0"
+                style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 14px;"/>
+
+    </HBox>
+</VBox>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" spacing="15.0" xmlns="[http://javafx.com/javafx/21](http://javafx.com/javafx/21)" xmlns:fx="[http://javafx.com/fxml/1](http://javafx.com/fxml/1)" fx:controller="org.example.controller.PermissionRequestController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Text text="Yeni İzin Talebi Oluşturma Formu (Builder Deseni)" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-fill: #007bff;" />
+
+    <GridPane hgap="15" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints prefWidth="150" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="250" />
+        </columnConstraints>
+
+        <Label text="Başlangıç Tarihi:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+        <DatePicker fx:id="startDatePicker" promptText="İzin Başlangıcı" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Bitiş Tarihi:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+        <DatePicker fx:id="endDatePicker" promptText="İzin Bitişi" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="İzin Nedeni:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+        <TextArea fx:id="reasonTextArea" prefRowCount="4" promptText="Seyahat, sağlık, aile ziyareti vb. detaylı bir neden giriniz..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <!-- Hata mesajları için alan -->
+        <Label fx:id="errorLabel" text="" style="-fx-text-fill: red; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2"/>
+
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="20.0">
+        <Button text="İptal" onAction="#handleCancel" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" />
+        <Button text="Talebi Gönder" onAction="#handleSubmitRequest" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" />
+    </HBox>
+</VBox>

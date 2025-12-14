@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="TOP_CENTER" spacing="15"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.StudentController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Öğrenci İzin Takip Ekranı"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <Label fx:id="notificationLabel"
+           text="Bildirimler burada görünecek."
+           style="-fx-text-fill: #0a84ff; -fx-font-size: 14px;"/>
+
+    <Button text="➕ Yeni İzin Talebi Oluştur"
+            onAction="#handleCreateNewPermissionRequest"
+            style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="permissionTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="startDateCol" text="Başlangıç" prefWidth="150"/>
+            <TableColumn fx:id="endDateCol" text="Bitiş" prefWidth="150"/>
+            <TableColumn fx:id="reasonCol" text="Neden" prefWidth="300"/>
+            <TableColumn fx:id="statusCol" text="Durum" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+</VBox>

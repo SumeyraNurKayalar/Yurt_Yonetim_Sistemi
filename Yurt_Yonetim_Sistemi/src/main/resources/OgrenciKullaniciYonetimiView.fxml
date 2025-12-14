@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.OgrenciKullaniciYonetimiController">
+    <children>
+        <TabPane layoutX="12.0" layoutY="12.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <Tab text="Öğrenci Listesi ve Arama">
+                <content>
+                    <BorderPane prefHeight="560.0" prefWidth="800.0">
+                        <top>
+                            <VBox BorderPane.alignment="CENTER">
+                                <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                        <children>
+                                            <Label text="Arama Kriteri:" />
+                                            <ComboBox fx:id="searchCriteria" prefWidth="150.0" promptText="Kriter Seçiniz" />
+                                            <TextField fx:id="searchStudentField" prefHeight="25.0" prefWidth="300.0" promptText="İsim, TC veya Oda No ile arayın..." onAction="#handleStudentSearch" />
+                                            <Button text="Ara" onAction="#handleStudentSearch" />
+                                            <Button fx:id="odasizlariFiltreButton" text="Odasızları Filtrele" onAction="#handleFilterOdasizlar" />
+                                        </children>
+                                        <VBox.margin>
+                                            <Insets top="10.0" />
+                                        </VBox.margin>
+                                    </HBox>
+                                    <Label text="* Sadece öğrenci rolündekiler listelenir." />
+                                </children>
+                                <BorderPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                </BorderPane.margin>
+                            </VBox>
+                        </top>
+                        <center>
+                            <TableView fx:id="studentTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                <columns>
+                                    <TableColumn fx:id="nameCol" prefWidth="200.0" text="Ad Soyad" />
+                                    <TableColumn fx:id="tcCol" prefWidth="150.0" text="TC Kimlik No" />
+                                    <TableColumn fx:id="roomCol" prefWidth="150.0" text="Mevcut Oda No" />
+                                    <TableColumn fx:id="studentDetailsCol" prefWidth="150.0" text="Detay" />
+                                </columns>
+                                <BorderPane.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                </BorderPane.margin>
+                            </TableView>
+                        </center>
+                    </BorderPane>
+                </content>
+            </Tab>
+
+            <Tab text="Yeni Kullanıcı Ekle">
+                <content>
+                    <VBox alignment="TOP_CENTER" spacing="15.0">
+                        <children>
+                            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Yeni Öğrenci/Personel Kaydı" />
+                            <GridPane hgap="10.0" vgap="10.0">
+                                <columnConstraints>
+                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0" />
+                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                    <Label text="Adı:" />
+                                    <TextField fx:id="newUserNameField" promptText="Ad" GridPane.columnIndex="1" />
+                                    <Label text="Soyadı:" GridPane.rowIndex="1" />
+                                    <TextField fx:id="newUserSurnameField" promptText="Soyad" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="TC Kimlik No:" GridPane.rowIndex="2" />
+                                    <TextField fx:id="newUserTcField" promptText="11 hane" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text="E-posta:" GridPane.rowIndex="3" />
+                                    <TextField fx:id="newUserEmailField" promptText="geçerli e-posta" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label text="Telefon:" GridPane.rowIndex="4" />
+                                    <TextField fx:id="newUserPhoneField" promptText="Telefon Numarası" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label text="Şifre:" GridPane.rowIndex="5" />
+                                    <PasswordField fx:id="newUserPasswordField" promptText="Min 8 karakter" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                                    <Label text="Rol:" GridPane.rowIndex="6" />
+                                    <ComboBox fx:id="newUserRoleCombo" prefWidth="150.0" promptText="Rol Seçiniz" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                                    <Label text="Adres:" GridPane.columnIndex="2" />
+                                    <TextArea fx:id="newUserAddressField" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowSpan="4" />
+
+                                </children>
+                            </GridPane>
+                            <HBox alignment="CENTER" spacing="20.0">
+                                <children>
+                                    <Button mnemonicParsing="false" text="Kaydet" onAction="#handleCreateUser" />
+                                    <Label fx:id="newUserStatusLabel" textFill="#dc3545" />
+                                </children>
+                            </HBox>
+                        </children>
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                    </VBox>
+                </content>
+            </Tab>
+        </TabPane>
+    </children>
+</AnchorPane>

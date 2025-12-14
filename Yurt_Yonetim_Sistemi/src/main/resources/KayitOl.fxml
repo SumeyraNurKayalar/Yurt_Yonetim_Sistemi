@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" spacing="10.0" prefHeight="550.0" prefWidth="400.0"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.KayitController">
+
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+
+    <Label text="Yeni Öğrenci Kaydı" textFill="#00796b">
+        <font>
+            <Font name="System Bold" size="22.0" />
+        </font>
+    </Label>
+
+    <Label text="Lütfen bilgilerinizi eksiksiz girin:" />
+
+    <TextField fx:id="adField" promptText="Ad" />
+    <TextField fx:id="soyadField" promptText="Soyad" />
+
+    <TextField fx:id="tcField" promptText="T.C. Kimlik No (Tam 11 Hane)" />
+
+    <TextField fx:id="emailField" promptText="E-posta" />
+
+    <TextField fx:id="telefonField" promptText="Telefon Numarası (Opsiyonel)" />
+
+    <PasswordField fx:id="sifreField" promptText="Şifre (Min. 8 karakter)" />
+    <PasswordField fx:id="sifreTekrarField" promptText="Şifre Tekrarı" />
+
+    <TextArea fx:id="adresArea" prefHeight="70.0" promptText="Adres Bilgisi (Opsiyonel)" />
+
+    <Button onAction="#kayitOl" prefWidth="200.0" text="Hesap Oluştur" style="-fx-background-color: #1e8ce7; -fx-text-fill: white;">
+        <VBox.margin>
+            <Insets top="15.0" />
+        </VBox.margin>
+    </Button>
+
+</VBox>
