@@ -1,7 +1,7 @@
 # Yurt Yönetim Sistemi Projesi
 Bu proje, bir öğrenci yurdu ortamındaki öğrenci kaydı, personel yönetimi, oda atamaları ve izin talebi süreçlerini yönetmek için tasarlanmış bir masaüstü uygulamasıdır. Uygulama, Java ve JavaFX kullanılarak Model-View-Controller prensipleri etrafında geliştirilmiş olup, temiz kod ve sürdürülebilirlik sağlamak için tasarım desenleri uygulamaktadır.
 
-## Temel Özellikler
+# Temel Özellikler
 • Güvenli Kimlik Doğrulama: Şifre hashleme ile güvenli giriş ve kayıt.
 
 • Rol Bazlı Erişim: Öğrenci ve Personel rolleri ile farklı arayüz ve yetkilendirme.
@@ -14,7 +14,7 @@ Bu proje, bir öğrenci yurdu ortamındaki öğrenci kaydı, personel yönetimi,
 
 • Dinamik Arama/Filtreleme: Öğrenci listelerinde dinamik arama mekanizmaları.
 
-Uygulamanın Mimarisi
+# Uygulamanın Mimarisi
 Proje, Katmanlı mimari prensibine sıkı sıkıya bağlıdır ve üç ana katmana ayrılmıştır:
 
 Controller: Kullanıcı girdisini alır, UI'ı yönetir ve Service katmanını çağırır.
@@ -25,10 +25,10 @@ Repository: Veritabanı erişimini soyutlar, JDBC işlemlerini yönetir.
 
 Model: Uygulamanın verilerini temsil eder.
 
-Uygulanan Tasarım Desenleri
+# Uygulanan Tasarım Desenleri
 Projenin modülerliğini ve sürdürülebilirliğini artıran temel tasarım desenleri:
 
-Singleton (Tekil Örnek) Deseni:
+## Singleton (Tekil Örnek) Deseni:
 Temel Amaç: Bir sınıfın yalnızca tek bir örneğinin (instance) var olmasını garanti etmek ve bu örneğe global bir erişim noktası sağlamaktır.
 
 Uygulamadaki İşlevi:
@@ -39,39 +39,39 @@ Uygulamadaki İşlevi:
 
 • Observer Sistemi: PermissionSubject.java (Observer/Gözlemci Deseni'nin yayıncısı), Singleton olarak tasarlanmıştır. Bu, tüm Observer'ların (StudentController, StaffController) tek ve aynı bildirim mekanizmasına abone olmasını ve güncellemeleri kaçırmamasını garanti eder.
 
-Strategy (Strateji) Deseni
+## Strategy (Strateji) Deseni
 Temel Amaç: Çalışma anında arama algoritmalarını dinamik olarak değiştirmektir.
 
 Uygulamadaki İşlevi: Bu desen, arama ve filtreleme işlemi yapılırken kullanılır. Kullanıcı, arama kriterini ("TC Numarası", "Oda Numarası" veya "İsim/Soyisim") seçtiğinde, Strateji dinamik olarak değişir. Örneğin, "TC Numarası" seçildiğinde new TCSearch() nesnesi oluşturulur. Bu strateji nesnesi, arama işlemini başlatması için RoomService'e gönderilir. Bu, farklı arama yöntemlerini kontrol koduna dokunmadan uygulamamızı sağlar.
 
-Observer (Gözlemci) Deseni
+## Observer (Gözlemci) Deseni
 Temel Amaç: Durum değişikliklerini anında ve gevşek bağlı bir şekilde ilgili bileşenlere bildirmektir.
 
 Uygulamadaki İşlevi: Bu desen, izin yönetimi akışında gerçek zamanlı iletişim için kullanılır. Bir öğrenci PermissionService üzerinden yeni bir izin kaydettiğinde, PermissionSubject hemen bir bildirim yayınlar. Bu bildirim, StaffController'daki (Personel Ekranı) refreshPermissions() metodunu otomatik olarak tetikleyerek beklemedeki izinler listesinin anında güncellenmesini sağlar. Aynı şekilde, personel bir izni onayladığında, StudentController'daki update() metodu tetiklenir ve öğrenciye anlık durum değişikliği bildirilir.
 
-State (Durum) Deseni
+## State (Durum) Deseni
 Temel Amaç: Bir nesnenin iç durumuna göre davranışını değiştirmek ve bu durum mantığını ayrıştırmaktır.
 
 Uygulamadaki İşlevi: Bu desen, oda doluluk yönetimi için kullanılır. Room.java nesnesi bir öğrenci yerleştirme (addOccupant()) isteği aldığında, bu isteği mevcut durum nesnesine (AvailableState.java veya FullState.java) devreder. Oda Dolu iken yerleştirme isteği gelirse, FullState yerleştirmeyi reddeder; Oda Müsait iken yerleştirme yapılır ve doluluk tam kapasiteye ulaşırsa durum otomatik olarak FullState'e geçer.
 
-Builder (Kurucu) Deseni
+## Builder (Kurucu) Deseni
 Temel Amaç: Karmaşık nesnelerin (çok sayıda parametreye sahip olanlar) adım adım, güvenli ve okunaklı bir şekilde oluşturulmasını sağlamaktır.
 
 Uygulamadaki İşlevi: Bu desen, Student, Staff, Room ve Izin dahil olmak üzere tüm Model sınıflarının oluşturulmasında kullanılır. Örneğin, OgrenciKullaniciYonetimiController'da yeni bir kullanıcı kaydı yapılırken, uzun ve karmaşık kurucular yerine zincirleme metotlar kullanılır: .firstName(ad).lastName(soyad).build(). Bu yöntem, kodun okunabilirliğini artırır ve nesne oluşturma güvenliğini sağlar.
 
-Factory (Fabrika) Deseni
+## Factory (Fabrika) Deseni
 Temel Amaç: Nesne oluşturma (hangi somut sınıfın oluşturulacağını seçme) mantığını merkezi bir yere taşımak ve bu mantığı tüketiciden gizlemektir.
 
 Uygulamadaki İşlevi: Bu desen, Veri Haritalama (Mapping) sürecinde kullanılır. JdbcStudentRepository sınıfındaki mapUser() metodu, veritabanından çektiği genel kayıtları (ResultSet), Factory'ye (UserFactory.createUserFromResultSet()) gönderir. Fabrika, kaydın rolünü ("Öğrenci" veya "Personel") kontrol ederek doğru tipte (Student veya Staff) nesneyi oluşturur ve tüm verileri üzerine haritalar. Bu, Repository'yi karmaşık nesne oluşturma mantığından soyutlar.
 
-Başlangıç ve Yapılandırma
+# Başlangıç ve Yapılandırma
 Veritabanı Kurulumu: DatabaseConnection.java dosyasındaki URL, USER ve PASSWORD değişkenlerini yerel SQL Server ayarlarınıza göre güncelleyin.
 
 Bağımlılıklar: Proje, JavaFX kütüphanesini ve JDBC sürücüsünü (bu durumda SQL Server) gerektirir.
 
 Başlatma: Uygulamayı controller dosyasında bulunan MainApp ile başlatın.
 
-Proje Ekibi
+# Proje Ekibi
 Azra AKBAŞ: https://github.com/AzraAkbas
 
 Sümeyra Nur KAYALAR: https://github.com/SumeyraNurKayalar
